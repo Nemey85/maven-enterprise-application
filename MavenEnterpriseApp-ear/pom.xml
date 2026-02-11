@@ -1,21 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-        <artifactId>maven-enterprise-application</artifactId>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
         <groupId>com.mt</groupId>
+        <artifactId>maven-enterprise-application</artifactId>
         <version>1.0</version>
     </parent>
-  <groupId>com.mt</groupId>
-  <artifactId>MavenEnterpriseApp-ear</artifactId>
-  <packaging>ear</packaging>
-  <version>1.0</version>
-  <name>MavenEnterpriseApp-ear JavaEE6 Assembly</name>
-  <url>http://maven.apache.org</url>
 
-  <build>
-    <finalName>MavenEnterpriseApp-ear</finalName>
-  </build>
+    <groupId>com.mt</groupId>
+    <artifactId>MavenEnterpriseApp-ear</artifactId>
+    <version>1.0</version>
+    <packaging>ear</packaging>
+
+    <name>MavenEnterpriseApp-ear</name>
+    <description>Enterprise EAR Assembly</description>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <!-- Java -->
+        <maven.compiler.release>17</maven.compiler.release>
+
+        <!-- Encoding -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.mt</groupId>
@@ -24,5 +38,23 @@
             <type>war</type>
         </dependency>
     </dependencies>
+
+    <build>
+        <finalName>MavenEnterpriseApp-ear</finalName>
+
+        <plugins>
+            <!-- EAR plugin (modern version) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
+
 
